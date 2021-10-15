@@ -23,9 +23,9 @@ while True:
     # TODO : apply the brightness and contrast
     # wait for keypress 100 milliseconds
     key = cv2.waitKey(100)
-    if key == ord'q':
+    if key == ord('q'):
         break
-    elif key == ord('s')
+    elif key == ord('s'):
         # TODO : save image
         pass     
 
