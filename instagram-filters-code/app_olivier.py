@@ -16,7 +16,18 @@ cv2.createTrackbar('contrast', 'app', 1, 100, dummy)
 cv2.createTrackbar('brightness', 'app', 50, 100, dummy)
 cv2.createTrackbar('filter', 'app', 0, 1, dummy) # TODO : update max value of filter
 cv2.createTrackbar('grayscale', 'app', 0, 1, dummy)
-# TODO: remove this line
-cv2.waitKey(0) 
+# Maiain UI loop
+while True:
+    # TODO : read all of the trackbar values
+    # TODO : apply the filters
+    # TODO : apply the brightness and contrast
+    # wait for keypress 100 milliseconds
+    key = cv2.waitKey(100)
+    if key == ord'q':
+        break
+    elif key == ord('s')
+        # TODO : save image
+        pass     
+
 #  window cleanup
 cv2.destroyAllWindows()
