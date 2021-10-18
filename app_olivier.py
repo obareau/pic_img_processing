@@ -8,7 +8,7 @@ def dummy(value):
     pass
 
 # Read ahead a image & make a grayscale copy
-color_original = cv2.imread('instagram-filters-code/test.jpg')
+color_original = cv2.imread('test.jpg')
 gray_original  = cv2.cvtColor(color_original, cv2.COLOR_BGR2GRAY)  
 #  creating the window with opencv (windows & trackbars)
 cv2.namedWindow('app')
@@ -21,10 +21,15 @@ cv2.createTrackbar('grayscale', 'app', 0, 1, dummy)
 
 # Main UI loop
 while True:
-    # TODO : read all of the trackbar values
+    # TODO : read all of the trackbars values
     grayscale = cv2.getTrackbarPos('grayscale', 'app')
+    contrast = cv2.getTrackbarPos('grayscale', 'app')
+    brightness = cv2.getTrackbarPos('brightness', 'app')
     # TODO : apply the filters
-    # TODO : apply the brightness and contrast
+    # Apply the brightness and contrast
+    color_modified = cv2.addWeighted(color_original, contrast, np.zeros_like(color_original), 0, brightness - 50)
+    gray_modified = cv2.addWeighted(gray_original, contrast, np.zeros_like(gray_original), 0, brightness - 50)
+    
     # wait for keypress 100 milliseconds
     key = cv2.waitKey(100)
     if key == ord('q'):
@@ -34,10 +39,9 @@ while True:
         pass
     # show the image
     if grayscale == 0:
-        # TODO : replace with modified image
-        cv2.imshow('app', color_original)
+        cv2.imshow('app', color_modified)
     else:
-        cv2.imshow('app',gray_original)
+        cv2.imshow('app', gray_modified)
 
 #  window cleanup
 cv2.destroyAllWindows()
