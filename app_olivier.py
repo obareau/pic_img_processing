@@ -23,7 +23,7 @@ cv2.createTrackbar('grayscale', 'app', 0, 1, dummy)
 while True:
     # TODO : read all of the trackbars values
     grayscale = cv2.getTrackbarPos('grayscale', 'app')
-    contrast = cv2.getTrackbarPos('grayscale', 'app')
+    contrast = cv2.getTrackbarPos('contrast', 'app')
     brightness = cv2.getTrackbarPos('brightness', 'app')
     # TODO : apply the filters
     # Apply the brightness and contrast
