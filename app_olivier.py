@@ -34,7 +34,7 @@ while True:
     contrast = cv2.getTrackbarPos('contrast', 'app')
     brightness = cv2.getTrackbarPos('brightness', 'app')
     kernel_idx = cv2.getTrackbarPos('kernels', 'app')
-    # Apply the filters
+   # apply the filters
     color_modified = cv2.filter2D(color_original, -1, kernels[kernel_idx])
     gray_modified = cv2.filter2D(gray_original, -1, kernels[kernel_idx])
     
