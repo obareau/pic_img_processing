@@ -10,12 +10,14 @@ def dummy(value):
 # define convolution kernels
 identity_kernel = np.array([[0, 0, 0], [0, 1, 0], [0, 0, 0]])
 sharpen_kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]])
+sharpen_kernel5 = np.array([[-1, 1, -1], [-0, 5, -0], [-1, 1, -1]])
 gaussian_kernel1 = cv2.getGaussianKernel(3, 0)
 gaussian_kernel2 = cv2.getGaussianKernel(5, 0)
-box_kernel = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]], np.float32) / 9.0
+gaussian_kernel3 = cv2.getGaussianKernel(13, 0)
+box_kernel = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]], np.float64) / 9.0
 # (1 + 2 + 3 + 4 + 5) / 5 = 1 * 1/5 + 2 * 1/5 + 3 * 1/5 + 4 * 1/5 + 5 * 1/5
 
-kernels = [identity_kernel, sharpen_kernel, gaussian_kernel1, gaussian_kernel2, box_kernel]
+kernels = [identity_kernel, sharpen_kernel,sharpen_kernel5,  gaussian_kernel1, gaussian_kernel2,gaussian_kernel3, box_kernel]
 
 # read in an image, make a grayscale copy
 color_original = cv2.imread('test.jpg')
@@ -27,6 +29,7 @@ cv2.namedWindow('app')
 cv2.createTrackbar('contrast', 'app', 1, 100, dummy)
 # name=brightness, initial value=50, max value=100, event handler=dummy
 cv2.createTrackbar('brightness', 'app', 50, 100, dummy)
+# TODO : print selected filter instead of just 'filter' in the trackbar
 cv2.createTrackbar('filter', 'app', 0, len(kernels)-1, dummy)
 cv2.createTrackbar('grayscale', 'app', 0, 1, dummy)
 
